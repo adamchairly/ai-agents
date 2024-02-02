@@ -32,9 +32,14 @@ $$Q(s, a) = Q(s, a) + \alpha \left[ R(s, a) + \gamma \max_{a'} Q(s', a') - Q(s, 
 - Each state is discretized into 10 bins.
 - Given this discretization strategy, the state-space consist of only $10^3$ states.
   
+![play](https://imgur.com/a/8zHljl7)
+
 ## Results
 
 - I've ran several training sessions, and found, that with a relatively low $\alpha$ (0.2), and high $\gamma$ (0.99), the agent is able to converge *very fast*, in about 400 episodes.
 - Given, that the state-space is relatively small, I kept $\epsilon$ (the exploration factor) at 0, because I found, that even at really low values (1e-10), the agent performs significantly worse.
-![Results of 1000 episode learning](res/result.png)
+- Below is the result of 1000 training episodes, where after 400 episodes the agent averaged above 5000 points.
+
+![Result](https://imgur.com/a/qbTpitC)
+
 
