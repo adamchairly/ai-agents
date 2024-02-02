@@ -32,7 +32,16 @@ $$Q(s, a) = Q(s, a) + \alpha \left[ R(s, a) + \gamma \max_{a'} Q(s', a') - Q(s, 
 - Each state is discretized into 10 bins.
 - Given this discretization strategy, the state-space consist of only $10^3$ states.
   
-![play](https://imgur.com/a/8zHljl7)
+<div style="width: 50%; height: 50%">
+  
+  
+  
+</div>
+
+<p align="center">
+  <img src=res/readme/play.gif alt="Play" width="50%">
+</p>
+
 
 ## Results
 
@@ -40,6 +49,8 @@ $$Q(s, a) = Q(s, a) + \alpha \left[ R(s, a) + \gamma \max_{a'} Q(s', a') - Q(s, 
 - Given, that the state-space is relatively small, I kept $\epsilon$ (the exploration factor) at 0, because I found, that even at really low values (1e-10), the agent performs significantly worse.
 - Below is the result of 1000 training episodes, where after 400 episodes the agent averaged above 5000 points.
 
-![Result](https://imgur.com/a/qbTpitC)
+![Result](res/readme/result.png)
 
+
+### How to run
 
