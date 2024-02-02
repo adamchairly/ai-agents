@@ -52,5 +52,6 @@ $$Q(s, a) = Q(s, a) + \alpha \left[ R(s, a) + \gamma \max_{a'} Q(s', a') - Q(s, 
 ![Result](res/readme/result.png)
 
 
+
 ### How to run
 
