@@ -13,7 +13,7 @@ class Plotter:
         plt.style.use('classic')
 
         plt.scatter(range(len(self.episode_scores)), self.episode_scores, s=10, color='black')
-        plt.plot(np.convolve(self.episode_scores, np.ones(200) / 200, mode='same'), color='blue', linewidth=2)
+        plt.plot(np.convolve(self.episode_scores, np.ones(250) / 100, mode='same'), color='blue', linewidth=2)
 
         # Set the labels for the axes
         plt.xlabel('Iteration')

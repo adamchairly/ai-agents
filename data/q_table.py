@@ -57,14 +57,7 @@ class QTable:
 
         return bin_index
 
-    def decay_epsilon(self):
-        self.epsilon *= self.decay_rate
-        self.epsilon = max(self.epsilon, self.min_epsilon)
-
-    def decay_alpha(self):
-        self.alpha -= 0.0001
-
-    def save(self, filename="data/q_table.npy"):
+    def save(self, filename="data/trained.npy"):
         try:
             np.save(filename, self.table)
             print(f"Q-table saved to {filename}")

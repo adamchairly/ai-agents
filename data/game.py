@@ -6,10 +6,9 @@ from objects.info import Info
 
 
 class Game:
-    def __init__(self, screen_width, screen_height, learn=True):
+    def __init__(self, screen_width, screen_height):
         self.screen_width = screen_width
         self.screen_height = screen_height
-        self.learn = learn
 
         self.background = Background(screen_width, screen_height)
         self.pipes = PipeController(screen_width, screen_height)
@@ -17,8 +16,7 @@ class Game:
         self.plotter = Plotter()
         self.over = False
 
-        if not learn:
-            self.info = Info(0, 0, screen_width, screen_height)
+        self.info = Info(0, 0, screen_width, screen_height)
 
     def flap(self):
         self.bird.flap()
@@ -32,8 +30,7 @@ class Game:
                 self.over = True
             self.check_point()
 
-            if not self.learn:
-                self.info.update(self.bird.point)
+            self.info.update(self.bird.point)
 
     def draw(self, screen):
         self.background.draw_background(screen)
@@ -41,8 +38,7 @@ class Game:
         self.background.draw_base(screen)
         self.bird.draw(screen)
 
-        if not self.learn:
-            self.info.draw(screen)
+        self.info.draw(screen)
 
     def check_point(self):
         for pipe in self.pipes.pipes:
@@ -86,8 +82,7 @@ class Game:
         self.bird = Bird(self.screen_width / 3, self.screen_height / 3)
         self.over = False
 
-        if not self.learn:
-            self.info = Info(0, 0, self.screen_width, self.screen_height)
+        self.info = Info(0, 0, self.screen_width, self.screen_height)
 
     def get_reward(self):
         reward = 0
