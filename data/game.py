@@ -1,3 +1,4 @@
+from data.plotter import Plotter
 from objects.pipe import PipeController
 from objects.bird import Bird
 from objects.background import Background
@@ -5,15 +6,19 @@ from objects.info import Info
 
 
 class Game:
-    def __init__(self, screen_width, screen_height):
+    def __init__(self, screen_width, screen_height, learn=True):
         self.screen_width = screen_width
         self.screen_height = screen_height
+        self.learn = learn
 
         self.background = Background(screen_width, screen_height)
         self.pipes = PipeController(screen_width, screen_height)
         self.bird = Bird(screen_width / 3, screen_height / 3)
-        self.info = Info(0, 0, screen_width, screen_height)
+        self.plotter = Plotter()
         self.over = False
+
+        if not learn:
+            self.info = Info(0, 0, screen_width, screen_height)
 
     def flap(self):
         self.bird.flap()
@@ -22,18 +27,22 @@ class Game:
         if not self.over:
             self.pipes.update()
             self.bird.update()
-            self.info.update(self.bird.point)
 
             if self.check_collision():
                 self.over = True
             self.check_point()
+
+            if not self.learn:
+                self.info.update(self.bird.point)
 
     def draw(self, screen):
         self.background.draw_background(screen)
         self.pipes.draw(screen)
         self.background.draw_base(screen)
         self.bird.draw(screen)
-        self.info.draw(screen)
+
+        if not self.learn:
+            self.info.draw(screen)
 
     def check_point(self):
         for pipe in self.pipes.pipes:
@@ -75,15 +84,15 @@ class Game:
         self.background = Background(self.screen_width, self.screen_height)
         self.pipes = PipeController(self.screen_width, self.screen_height)
         self.bird = Bird(self.screen_width / 3, self.screen_height / 3)
-        self.info = Info(0, 0, self.screen_width, self.screen_height)
-
         self.over = False
+
+        if not self.learn:
+            self.info = Info(0, 0, self.screen_width, self.screen_height)
 
     def get_reward(self):
         reward = 0
         if self.over:
             reward -= 1000
-            reward -= abs(self.get_closest_pipe()[1])
         else:
             reward += self.bird.point_to_add * 100
             self.bird.point_to_add = 0

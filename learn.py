@@ -2,21 +2,22 @@ from data.game import Game
 from data.q_table import QTable
 from data.config import *
 
-game = Game(WIDTH, HEIGHT)
-q = QTable(BIN_SIZE_X, BIN_SIZE_Y, BIN_VELOCITY, 2, 0.2, 1.0, -1.0)
+game = Game(WIDTH, HEIGHT, True)
+q = QTable(BIN_SIZE_X, BIN_SIZE_Y, BIN_VELOCITY, 2, 0.18, 0.99, -1.0)
 
 
 def run():
-    episode_number = 8000
+    episode_number = 5001
 
     for i in range(episode_number):
         game.reset()
-        episode_reward, episode_score = run_episode(i)
-        game.info.episode_scores.append(episode_score)
-        q.decay_epsilon()
+        _, score = run_episode()
+        game.plotter.episode_scores.append(score)
+        q.decay_alpha()
+        print("Episode {}: Score {} Epsilon: {}".format(i, score, q.epsilon))
 
+    game.plotter.plot_scores()
     q.save('q_table.npy')
-    game.info.plot_scores()
 
 
 def run_episode():
@@ -39,6 +40,8 @@ def run_episode():
         episode_reward += reward
 
         q.update(discretized_state, action, reward, discretized_new_state)
+        if game.bird.point >= 100000:
+            game.over = True
 
     episode_score = game.bird.point
 

@@ -1,5 +1,6 @@
 import numpy as np
 import random
+from data.config import BIN_SIZE_X, BIN_SIZE_Y, BIN_VELOCITY
 
 
 class QTable:
@@ -9,8 +10,8 @@ class QTable:
         self.num_states_vel = num_states_vel
         self.num_actions = num_actions
 
-        self.min_epsilon = 0.000000001
-        self.decay_rate = 0.9998395890030878
+        self.min_epsilon = 1e-10
+        self.decay_rate = 0.99
         self.alpha = alpha
         self.gamma = gamma
         self.epsilon = epsilon
@@ -23,7 +24,7 @@ class QTable:
     def update(self, state, action, reward, next_state):
 
         current_q = self.table[state[0], state[1], state[2], action]
-        max_future_q = np.max(self.table[next_state[0], next_state[1],  next_state[2], :])
+        max_future_q = np.max(self.table[next_state[0], next_state[1], next_state[2], :])
 
         new_q = (1 - self.alpha) * current_q + self.alpha * (reward + self.gamma * max_future_q)
 
@@ -39,10 +40,9 @@ class QTable:
 
     def discretize_state(self, dist_x, dist_y, vel):
 
-        dist_x = self.discretize_value(dist_x, 0, 240, 10)
-        # [480 - gap / 2 (160/2) - bird.height][3 * screen_width / 4]
-        dist_y = self.discretize_value(dist_y, -366, 480, 10)
-        vel = self.discretize_value(vel, -5, 5, 30)
+        dist_x = self.discretize_value(dist_x, 0, 240, BIN_SIZE_X)
+        dist_y = self.discretize_value(dist_y, -366, 480, BIN_SIZE_Y)
+        vel = self.discretize_value(vel, -5, 5, BIN_VELOCITY)
 
         return dist_x, dist_y, vel
 
@@ -61,6 +61,9 @@ class QTable:
         self.epsilon *= self.decay_rate
         self.epsilon = max(self.epsilon, self.min_epsilon)
 
+    def decay_alpha(self):
+        self.alpha -= 0.0001
+
     def save(self, filename="data/q_table.npy"):
         try:
             np.save(filename, self.table)
@@ -74,4 +77,3 @@ class QTable:
             print(f"Loaded Q-table from {filename}")
         except IOError:
             print(f"No existing Q-table found at {filename}, starting fresh.")
-
