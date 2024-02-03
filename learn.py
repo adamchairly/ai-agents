@@ -51,7 +51,7 @@ if __name__ == "__main__":
     parser.add_argument('--alpha', type=float, default=0.2)
     parser.add_argument('--gamma', type=float, default=0.99)
     parser.add_argument('--epsilon', type=float, default=-1.0)
-    parser.add_argument('--episode_number', type=int, default=1001)
+    parser.add_argument('--episode_number', type=int, default=1000)
     parser.add_argument('--plotting', type=bool, default=True)
 
     args = parser.parse_args()
