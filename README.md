@@ -1,14 +1,14 @@
 # Flappy: Q-learning
 
-This project is made as an experiment with Q-learning in a relatively simple enviroment; in the world of Flappy Bird.
+This project is made as an experiment with Q-learning in a relatively simple environment; in the world of Flappy Bird.
 
 The dependencies of the project are `pygame`, `numpy` and optionally `matplotlib` for plotting the results of a learning period.
 
-The goal was to implement the algorithm in practice and potentially improve on the works I discovered in github; previous experiments by [Cihan](https://github.com/chncyhn/flappybird-qlearning-bot) and [SarvagyaVaish](https://sarvagyavaish.github.io/FlappyBirdRL/).
+The goal was to implement the algorithm in practice and potentially improve on the works I discovered in Github; previous experiments by [Cihan](https://github.com/chncyhn/flappybird-qlearning-bot) and [SarvagyaVaish](https://sarvagyavaish.github.io/FlappyBirdRL/).
 
 ## Q-learning
 
-- Q-learning is a model-free reinforcement learning algorithm, using a Q-table to store quality values to each state-action pair. Q(s, a)
+- Q-learning is a model-free reinforcement learning algorithm, using a Q-table to store quality values to each state-action pair.
 - The Q-value for a particular state-action pair is updated using the formula:
 $$Q(s, a) = Q(s, a) + \alpha \left[ R(s, a) + \gamma \max_{a'} Q(s', a') - Q(s, a) \right ]$$ 
 - $Q(s, a)$ is the current value
@@ -16,7 +16,8 @@ $$Q(s, a) = Q(s, a) + \alpha \left[ R(s, a) + \gamma \max_{a'} Q(s', a') - Q(s, 
 -  $max_{a'} Q(s', a')$ is the maximum predicted reward achievable in the new state $s'$, considering all possible actions $a'$.
 - $\alpha$ is the learning rate, determining how much the new information overrides old information.
 - $\gamma$ is the discount factor, determining the importance of future rewards compared to immediate rewards
-- In a simpler environment an algorithm like Q-learning can be a good choice, because it can be trained fast and is more cost-efficient than trainig a DNN.
+
+- Q-learning can be a good choice in a simple environment, because it can be trained fast and is more cost-efficient than training a DNN.
 
 ### Integrating into the Flappy Bird environment
 
