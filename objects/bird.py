@@ -46,7 +46,7 @@ class Bird:
                                                 self.angle)
         window.blit(rotated_image, (self.x, self.y))
 
-        hitbox = self.get_rect()  # Get the bird's hitbox
+        hitbox = self.get_rect()
         pygame.draw.rect(window, (255, 0, 0), hitbox, 2)
 
     def flap(self):

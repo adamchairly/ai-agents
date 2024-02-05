@@ -10,8 +10,6 @@ class QTable:
         self.num_states_vel = num_states_vel
         self.num_actions = num_actions
 
-        self.min_epsilon = 1e-10
-        self.decay_rate = 0.99
         self.alpha = alpha
         self.gamma = gamma
         self.epsilon = epsilon

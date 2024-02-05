@@ -16,8 +16,9 @@ $$Q(s, a) = Q(s, a) + \alpha \left[ R(s, a) + \gamma \max_{a'} Q(s', a') - Q(s, 
 -  $max_{a'} Q(s', a')$ is the maximum predicted reward achievable in the new state $s'$, considering all possible actions $a'$.
 - $\alpha$ is the learning rate, determining how much the new information overrides old information.
 - $\gamma$ is the discount factor, determining the importance of future rewards compared to immediate rewards
+- In a simpler environment an algorithm like Q-learning can be a good choice, because it can be trained fast and is more cost-efficient than trainig a DNN.
 
-### Integrating into the Flappy Bird enviroment
+### Integrating into the Flappy Bird environment
 
 - The state-space consist of:
   - Vertical distance from lower pipe
@@ -34,7 +35,7 @@ $$Q(s, a) = Q(s, a) + \alpha \left[ R(s, a) + \gamma \max_{a'} Q(s', a') - Q(s, 
   
 
 <p align="center">
-  <img src=res/readme/play.gif alt="Play" width="25%">
+  <img src=res/readme/play.gif alt="Play" width="45%">
 </p>
 
 
@@ -42,8 +43,8 @@ $$Q(s, a) = Q(s, a) + \alpha \left[ R(s, a) + \gamma \max_{a'} Q(s', a') - Q(s, 
 
 - I've run several training sessions, and found, that with a relatively low $\alpha$ (0.2), and high $\gamma$ (0.99), the agent is able to converge *fast*, in about 500 episodes.
 - Given, that the state-space is relatively small, I kept $\epsilon$ (the exploration factor) at 0, because I found, that even at really low values (1e-10), the agent performs significantly worse.
-- Below is the result of 1000 training episodes, where after 600 episodes the agent averaged above 60000 points. 
-- The maximum score was limited to 100000 to keep the running time reasonble. (It was ~11 hours)
+- Below is the result of 1000 training episodes, where after 600 episodes the agent averaged above 60000 points per 250 episode. 
+- The maximum score was limited to 100000 to keep the running time reasonable. (It was ~9 hours)
 - The trained table is available at data/trained.npy
 <p align="center">
   <img src=res/readme/result.png alt="Play" width="85%">
@@ -51,7 +52,7 @@ $$Q(s, a) = Q(s, a) + \alpha \left[ R(s, a) + \gamma \max_{a'} Q(s', a') - Q(s, 
 </p>
 
 
-## Running the Application
+# Running the Application
 
 This project can be executed with customizable parameters via command-line arguments using pythons argparser.
 

@@ -32,10 +32,6 @@ class Pipe:
         self.bottom_x -= SPEED
         self.top_x -= SPEED
 
-        #if self.bottom_x + self.width < 0:
-            #self.bottom_x, self.bottom_y, self.top_x, self.top_y = self.set_new_position()
-            #self.passed = False
-
     def generate_coords(self):
         bottom_x = (self.screen_width / 2 + self.width)
         bottom_y = random.uniform(self.gap + self.width, self.screen_height - self.gap)
