@@ -5,8 +5,10 @@ The only dependency is `pygame`.
 
 ## Minimax algorithm
 
-Great, and in-depth explanation of the algorithm can be found at [Wikipedia](https://en.wikipedia.org/wiki/Minimax).\
-In this use-case, taking a 3x3 board, the algorithm has to evaluate 9! possible states at the first decision.\
+The Minimax algorithm is a decision rule for minimizing the possible loss for a worst-case scenario.\
+Great, and in-depth explanation of the algorithm can be found at [Wikipedia](https://en.wikipedia.org/wiki/Minimax).   
+
+In the specific case of a 3x3 Tic-Tac-Toe board, the algorithm theoretically needs to evaluate 9! possible states for the first move.\
 With alpha-beta pruning the performance can be improved significantly, however with large state-spaces, the algorithm falls back.
 
 <p align="center">
