@@ -29,8 +29,8 @@ The goal was to implement the algorithm in practice and potentially improve on t
 
 # Results
 
-- I've run several training sessions, and found, that with a relatively low $\alpha$ (0.2), and high $\gamma$ (0.99), the agent is able to converge *fast*, in about 500 episodes.
-- Given, that the state-space is relatively small, I kept $\epsilon$ (the exploration factor) at 0, because I found, that even at really low values (1e-10), the agent performs significantly worse.
+- I've run several training sessions, and found, that with a relatively low $\alpha$ (0.2), and high $\gamma$ (0.99), the agent is able to converge fast, in about 500 episodes.
+- Given, that the state-space is relatively small, I kept $\epsilon$ at 0, because I found, that even at really low values (1e-10), the agent performs significantly worse.
 - Below is the result of 1000 training episodes, where after 600 episodes the agent averaged above 60000 points per 250 episode. 
 - The maximum score was limited to 100000 to keep the running time reasonable. (It was ~9 hours)
 - The trained table is available at data/trained.npy
