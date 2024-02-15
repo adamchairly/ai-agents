@@ -6,20 +6,7 @@ The dependencies of the project are `pygame`, `numpy` and optionally `matplotlib
 
 The goal was to implement the algorithm in practice and potentially improve on the works I discovered in Github; previous experiments by [Cihan](https://github.com/chncyhn/flappybird-qlearning-bot) and [SarvagyaVaish](https://sarvagyavaish.github.io/FlappyBirdRL/).
 
-## Q-learning
-
-- Q-learning is a model-free reinforcement learning algorithm, using a Q-table to store quality values to each state-action pair.
-- The Q-value for a particular state-action pair is updated using the formula:
-$$Q(s, a) = Q(s, a) + \alpha \left[ R(s, a) + \gamma \max_{a'} Q(s', a') - Q(s, a) \right ]$$ 
-- $Q(s, a)$ is the current value
-- $R(s,a)$ is the reward for taking action $a$ in state $s$
--  $max_{a'} Q(s', a')$ is the maximum predicted reward achievable in the new state $s'$, considering all possible actions $a'$.
-- $\alpha$ is the learning rate, determining how much the new information overrides old information.
-- $\gamma$ is the discount factor, determining the importance of future rewards compared to immediate rewards
-
-- Q-learning can be a good choice in a simple environment, because it can be trained fast and is more cost-efficient than training a DNN.
-
-### Integrating into the Flappy Bird environment
+## Flappy Bird environment
 
 - The state-space consist of:
   - Vertical distance from lower pipe
