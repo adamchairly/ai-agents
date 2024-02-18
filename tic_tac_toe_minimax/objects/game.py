@@ -1,6 +1,6 @@
 import pygame
-from data.board import Board
-from objects.minimax_agent import MinimaxAgent
+from ..data.board import Board
+from ..objects.minimax_agent import MinimaxAgent
 
 
 class Game:
